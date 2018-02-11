@@ -1,5 +1,6 @@
 package javaquiz.config;
 
+import javaquiz.persistence.dao.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
@@ -9,7 +10,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetailsService;
 
 @EnableWebSecurity
-@EnableJpaRepositories(basePackageClasses = UserRepository.class)
+@EnableJpaRepositories(basePackageClasses = UserDao.class)
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 
