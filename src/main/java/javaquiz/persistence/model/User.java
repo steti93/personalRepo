@@ -30,6 +30,23 @@ public class User {
     @JoinTable(name = "user_role",joinColumns =@JoinColumn(name = "user_id"))
     private Set<Role> roles;
 
+    public User(User user) {
+        user.enabled = user.getEnabled();
+        user.createdAt = user.getCreatedAt();
+        user.updatedAt = user.getUpdatedAt();
+        user.email = user.getEmail();
+        user.lastName = user.getLastName();
+        user.name = user.getName();
+        user.password = user.getPassword();
+        user.roles = user.getRoles();
+        user.userId = user.getId();
+
+    }
+
+    public User(){
+
+    }
+
     public Integer getId() {
         return userId;
     }
@@ -96,5 +113,9 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 }

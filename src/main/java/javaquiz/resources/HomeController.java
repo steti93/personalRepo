@@ -36,8 +36,4 @@ public class HomeController {
 
     }
 
-    @RequestMapping("/admin")
-    public ModelAndView accessAdminPannel(){
-        return new ModelAndView("");
-    }
 }
