@@ -2,6 +2,7 @@ package javaquiz.persistence.model;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -20,18 +21,18 @@ public class User {
     private String email;
     @Column(name = "password")
     private String password;
-    @Column(name = "enabled")
-    private Boolean enabled;
+    @Column(name = "active")
+    private Boolean active;
     @Column(name = "created_at")
     private Date createdAt;
     @Column(name = "updated_at")
     private Date updatedAt;
     @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinTable(name = "user_role",joinColumns =@JoinColumn(name = "user_id"))
-    private Set<Role> roles;
+    private List<Role> roles;
 
     public User(User user) {
-        user.enabled = user.getEnabled();
+        user.active = user.getActive();
         user.createdAt = user.getCreatedAt();
         user.updatedAt = user.getUpdatedAt();
         user.email = user.getEmail();
@@ -83,12 +84,12 @@ public class User {
         this.password = password;
     }
 
-    public Boolean getEnabled() {
-        return enabled;
+    public Boolean getActive() {
+        return active;
     }
 
-    public void setEnabled(Boolean enabled) {
-        this.enabled = enabled;
+    public void setActive(Boolean enabled) {
+        this.active = enabled;
     }
 
     public Date getCreatedAt() {
@@ -107,11 +108,11 @@ public class User {
         this.updatedAt = updatedAt;
     }
 
-    public Set<Role> getRoles() {
+    public List<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(List<Role> roles) {
         this.roles = roles;
     }
 

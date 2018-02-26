@@ -23,8 +23,8 @@ public class HomeController {
         return "index";
     }
 
-    @RequestMapping(value = "/feed",method = RequestMethod.POST)
-    public ModelAndView submitFeed(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("message") String comment){
+    @RequestMapping(value = "/feed", method = RequestMethod.POST)
+    public ModelAndView submitFeed(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("message") String comment) {
         Feedback feedback = new Feedback();
         feedback.setName(name);
         feedback.setEmail(email);
