@@ -1,6 +1,6 @@
 package javaquiz.service;
 
-import javaquiz.persistence.model.User;
+import javaquiz.persistence.model.Users;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,9 +8,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.stream.Collectors;
 
-public class CustomUserDetails extends User implements UserDetails {
+public class CustomUsersDetails extends Users implements UserDetails {
 
-    public CustomUserDetails(final User user) {
+    public CustomUsersDetails(final Users user) {
         super(user);
 
     }
@@ -19,7 +19,7 @@ public class CustomUserDetails extends User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles()
                 .stream()
-                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRoleName()))
+                .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getRole()))
                 .collect(Collectors.toList());
     }
 

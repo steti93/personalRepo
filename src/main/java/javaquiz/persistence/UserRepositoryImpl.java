@@ -1,13 +1,13 @@
 package javaquiz.persistence;
 
-import javaquiz.persistence.model.User;
+import javaquiz.persistence.model.Users;
 
 import java.util.Optional;
 
 public abstract class UserRepositoryImpl implements UserRepository{
 
     @Override
-    public Optional<User> getUserByName(String userName) {
+    public Optional<Users> getUserByName(String userName) {
         return findAll().stream()
                 .filter(r->r.getName().equals(userName)).findFirst();
     }

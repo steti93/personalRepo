@@ -1,7 +1,7 @@
 package javaquiz.service;
 
 import javaquiz.persistence.UserRepository;
-import javaquiz.persistence.model.User;
+import javaquiz.persistence.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -18,8 +18,8 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<User> userOptional = userDao.getUserByName(userName);
+        Optional<Users> userOptional = userDao.getUserByName(userName);
         userOptional.orElseThrow(() -> new UsernameNotFoundException("Username not found"));
-        return userOptional.map(CustomUserDetails::new).get();
+        return userOptional.map(CustomUsersDetails::new).get();
     }
 }

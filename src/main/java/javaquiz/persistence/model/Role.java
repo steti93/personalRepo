@@ -1,38 +1,35 @@
 package javaquiz.persistence.model;
 
 import javax.persistence.*;
-import java.sql.Date;
 
 @Entity
 @Table(name = "role")
 public class Role {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "role_id", nullable = false)
-    private Integer roleId;
-    @Column(name = "role_name")
-    private String roleName;
-    @Column(name = "created_at")
-    private Date createdAt;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "role_id")
+    private int roleId;
 
-    public Integer getRoleId() {
+    @Column(name = "role")
+    private String role;
+
+    public Role() {
+    }
+
+    public int getRoleId() {
         return roleId;
     }
 
-    public String getRoleName() {
-        return roleName;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
     }
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName;
+    public String getRole() {
+        return role;
     }
 
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
+    public void setRole(String role) {
+        this.role = role;
     }
 }
