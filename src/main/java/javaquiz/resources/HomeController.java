@@ -1,9 +1,9 @@
 package javaquiz.resources;
 
-import javaquiz.persistence.dao.FeedbackDao;
+import javaquiz.persistence.repository.FeedbackRepository;
 import javaquiz.persistence.model.Feedback;
+import javaquiz.service.FeedBackService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +16,7 @@ import java.util.Date;
 public class HomeController {
 
     @Autowired
-    private FeedbackDao feedbackDao;
+    private FeedBackService feedBackService;
 
     @RequestMapping("/")
     public String index() {
@@ -31,8 +31,10 @@ public class HomeController {
         feedback.setComment(comment);
         feedback.setView(0);
         feedback.setCreatedAt(new Date());
-        feedbackDao.save(feedback);
-        return new ModelAndView("redirect:/#contact", HttpStatus.OK);
+        feedBackService.saveFeddback(feedback);
+        ModelAndView returnedMessage = new ModelAndView("redirect:/#contact");
+        returnedMessage.addObject("formResponse", true);
+        return returnedMessage;
 
     }
 

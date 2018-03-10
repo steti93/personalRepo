@@ -1,6 +1,6 @@
 package javaquiz.service;
 
-import javaquiz.persistence.UserRepository;
+import javaquiz.persistence.repository.UserRepository;
 import javaquiz.persistence.model.Users;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;

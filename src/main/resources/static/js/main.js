@@ -1,48 +1,23 @@
 $(document).ready(function () {
 
-$('#contact-form1').submit(function () {
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)),
+        sURLVariables = sPageURL.split('&'),
+        sParameterName,
+        i;
 
-//jQuery.validator.setDefaults({
-//              debug: true,
-//              success: "valid"
-//            });
-//            $( "#contact-form" ).validate({
-//              rules: {
-//                name: {
-//                  required: true
-//                }
-//                 email: {
-//                    required: true
-//                 }
-//                message:{
-//                required:true
-//                }
-//              }
-//            });
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
 
-            alert("iopta");
-            var data = {}
-			data["name"] = $("input[name='name']").val();
-			data["email"] = $("input[name='email']").val();
-			data["message"] = $("textarea[name='message']").val();
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
 
+        var feedBackResponse = getUrlParameter('formResponse');
+                if(feedBackResponse=="true")
+                        $("#successModal").modal()
 
-e.preventDefault();
-e.stopPropagation();
-             $.ajax({
-                     type: "POST",
-                     contentType: "application/json",
-                     url: "/test",
-                     data: JSON.stringify(data),
-                     timeout: 600000,
-                     dataType: 'json',
-                     success: function (data) {
-                         $('#success').modal('show');
-                     },
-                     error: function (e) {
-                        $('#fail').modal('show');
-                     }
-            });
-         });
 
 });

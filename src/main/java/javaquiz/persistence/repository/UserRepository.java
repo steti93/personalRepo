@@ -1,4 +1,4 @@
-package javaquiz.persistence;
+package javaquiz.persistence.repository;
 
 import javaquiz.persistence.model.Users;
 import org.springframework.data.jpa.repository.JpaRepository;
