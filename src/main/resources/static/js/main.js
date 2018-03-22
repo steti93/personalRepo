@@ -1,5 +1,13 @@
 $(document).ready(function () {
 
+if($("#create-error").text().length>0){
+   $("#createUser").modal()
+   }
+
+   if($("#logIn-error").text().length>0){
+      $("#logIn").modal()
+      }
+
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = decodeURIComponent(window.location.search.substring(1)),
         sURLVariables = sPageURL.split('&'),
@@ -15,9 +23,8 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
-        var feedBackResponse = getUrlParameter('formResponse');
-                if(feedBackResponse=="true")
-                        $("#successModal").modal()
-
-
+var feedBackResponse = getUrlParameter('formResponse');
+        if(feedBackResponse=="true"){
+        $("#successModal").modal()
+        }
 });

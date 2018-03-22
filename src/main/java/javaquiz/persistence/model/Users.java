@@ -21,9 +21,8 @@ public class Users {
     private String lastName;
     @Column(name = "active")
     private int active;
-    @OneToMany(cascade = CascadeType.MERGE, fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    @Column(name = "role")
+    private String role;
 
     public Users() {
     }
@@ -31,7 +30,7 @@ public class Users {
     public Users(Users users) {
         this.active = users.getActive();
         this.email = users.getEmail();
-        this.roles = users.getRoles();
+        this.role = users.getRole();
         this.name = users.getName();
         this.lastName =users.getLastName();
         this.id = users.getId();
@@ -86,11 +85,11 @@ public class Users {
         this.active = active;
     }
 
-    public Set<Role> getRoles() {
-        return roles;
+    public String getRole() {
+        return role;
     }
 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
+    public void setRole(String role) {
+        this.role = role;
     }
 }

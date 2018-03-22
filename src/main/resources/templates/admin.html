@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title>Java Quiz</title>
+    <div th:replace="fragments/header :: head"/>
+</head>
+<body id="page-top">
+<!-- Navigation -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <p class="navbar-text navbar-right" th:text="${responseMessage}"></p>
+        </div>
+    </div>
+</nav>
+
+<div th:replace="fragments/footer :: footer"/>
+<script src="../static/js/main.js"
+        th:src="@{/js/main.js}"></script>
+</body>
+</html>

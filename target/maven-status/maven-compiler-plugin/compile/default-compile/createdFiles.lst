@@ -1,0 +1,14 @@
+javaquiz\persistence\model\Feedback.class
+javaquiz\persistence\repository\UserRepositoryImpl.class
+javaquiz\common\UserRoleType.class
+javaquiz\service\FeedBackServiceImpl.class
+javaquiz\service\FeedBackService.class
+javaquiz\persistence\repository\FeedbackRepository.class
+javaquiz\persistence\repository\FedbackRepositoryImpl.class
+javaquiz\resources\HomeController.class
+javaquiz\persistence\model\Users.class
+javaquiz\service\UserServiceImpl.class
+javaquiz\Application.class
+javaquiz\service\UserService.class
+javaquiz\persistence\repository\UserRepository.class
+javaquiz\resources\AdminController.class

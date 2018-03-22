@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:form="http://www.w3.org/1999/html">
+<html xmlns:th="http://www.thymeleaf.org">
 <head lang="en">
 
     <title>Java Quiz</title>
@@ -23,6 +23,12 @@
         </li>
         <li class="sidebar-nav-item">
             <a class="js-scroll-trigger" href="#contact">Contact</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a data-toggle="modal" href="#createUser">Register</a>
+        </li>
+        <li class="sidebar-nav-item">
+            <a data-toggle="modal" href="#logIn">Log-in</a>
         </li>
     </ul>
 </nav>
@@ -96,6 +102,95 @@
             </div>
             <div class="modal-body text-center">
                 <h2>Your message was sent with success!</h2>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="createUser" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <H3 class="text-center">Registration form</H3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="/createUser" method="post" id="create-form" class="contact-form col-md-12">
+                    <div class="row">
+                        <div class="text-center" id="create-error" th:text="${warningMessage}"></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" path="name" name="name"
+                                       required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" name="lastName" autocomplete="on" id="lastName"
+                                       placeholder="Last name" required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="password" autocomplete="on"
+                                       id="password"
+                                       placeholder="password" required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="email" class="form-control" name="email" autocomplete="on"
+                                       placeholder="E-mail" required="required"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-sm pull-right">Register</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="logIn" role="dialog">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <H3 class="text-center">Log-in form</H3>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body text-center">
+                <form action="/log-in" method="post" id="logIn-form" class="contact-form col-md-12">
+                    <div class="row">
+                        <div class="text-center" id="logIn-error" th:text="${responseMessage}"></div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="text" class="form-control" placeholder="username" name="username"
+                                       required="required"/>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <input type="password" class="form-control" name="userPassword"
+                                       placeholder="user password" required="required"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-sm pull-right">Log-in</button>
+                        </div>
+                    </div>
+                </form>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

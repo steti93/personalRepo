@@ -1,9 +1,9 @@
 package javaquiz;
 
-import javaquiz.persistence.model.Role;
+import javaquiz.common.UserRoleType;
 import javaquiz.persistence.model.Users;
-import javaquiz.persistence.repository.RoleRepository;
 import javaquiz.persistence.repository.UserRepository;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,23 +28,12 @@ public class HomeControllerTest {
     private MockMvc mvc;
 
     @Autowired
-    private RoleRepository roleRepository;
-
-    @Autowired
     private UserRepository userRepository;
 
     @Test
     public void getIndex() throws Exception {
         mvc.perform(MockMvcRequestBuilders.get("/").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk());
-    }
-
-    @Test
-    public void addRoles() {
-        if (roleRepository.findAll().isEmpty()) {
-            roleRepository.save(new Role("ADMIN"));
-            roleRepository.save(new Role("USER"));
-        }
     }
 
     @Test
@@ -57,14 +46,14 @@ public class HomeControllerTest {
             adminUser.setLastName("admin");
             adminUser.setPassword(passwordEncoder.encode("admin"));
             adminUser.setActive(1);
-            adminUser.setRoles(roleRepository.findAll().stream().filter(r->r.getRole().equals("ADMIN")).collect(Collectors.toSet()));
+            adminUser.setRole(UserRoleType.ADMIN.toString());
             userRepository.save(adminUser);
         }
     }
 
-    @Test
+    @Test @Ignore
     public void deleteUserByUserName(){
-        Users deletedUser = userRepository.getUserByName("ADMIN").get();
+        Users deletedUser = userRepository.getUserByName("admin").get();
         userRepository.delete(deletedUser);
     }
 }
