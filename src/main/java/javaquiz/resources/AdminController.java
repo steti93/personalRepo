@@ -11,6 +11,6 @@ public class AdminController {
     @PreAuthorize("hasAnyRole('ADMIN')")
     @RequestMapping(value = "/admin", method = RequestMethod.GET)
     public String accessAdminPannel() {
-        return "admin page";
+        return "admin/index";
     }
 }
